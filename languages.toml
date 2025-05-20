@@ -1,0 +1,108 @@
+[[language]]
+name = "go"
+auto-format = true
+formatter = { command = "goimports" }
+
+[language-server.sql-language-server]
+command = "sql-language-server"
+args = ["up", "--method", "stdio"]
+
+[[language]]
+name = "sql"
+language-servers = [ "sql-language-server" ]
+
+[language-server.yaml-language-server.config.yaml]
+format = { enable = true }
+validation = true
+
+[language-server.yaml-language-server.config.yaml.schemas]
+"https://json.schemastore.org/github-workflow.json" = ".github/workflows/*.{yml,yaml}"
+"https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-tasks.json" = "roles/{tasks,handlers}/*.{yml,yaml}"
+
+# HTML, css, js, ts
+[[language]]
+name = "html"
+scope="source.html"
+file-types = ["html"]
+language-servers = [ "vscode-html-language-server"]
+
+[[language]]
+name = "css"
+scope = "source.css"
+file-types=["css"]
+language-servers = [ "vscode-css-language-server" ]
+
+[[language]]
+name = "json"
+scope = "source.json"
+file-types = ["json"]
+language-servers = [ "vscode-json-language-server" ]
+
+[language-server.pbls]
+command = "pbls"
+
+[[language]]
+name = "protobuf"
+language-servers = ['pbls']
+
+[[language]]
+name = "js"
+scope = "source.js"
+file-types = ["js"]
+language-servers = [
+  "typescript-language-server", # optional
+  "vscode-eslint-language-server",
+]
+
+[[language]]
+name = "toml"
+formatter = { command = "taplo", args = ["fmt", "-"] }
+
+[[language]]
+name = "ts"
+scope = "source.ts"
+file-types = ["ts", "jsx", "tsx"]
+language-servers = [ "typescript-language-server" ]
+
+# python using ruff, pyright and black
+
+# [[language]]
+# name = "python"
+# language-servers = [ "pyright", "ruff" ]
+
+# [language-server.pyright.config.python.analysis]
+# typeCheckingMode = "basic"
+
+# [language-server.ruff]
+# command = "ruff-lsp"
+
+# [language-server.ruff.config.settings]
+# args = ["--ignore", "E501"]
+
+# [language.formatter]
+# command = "black"
+# args = ["--line-length", "125", "--quiet", "-"]
+
+# python using pylsp and mypy
+
+[[language]]
+name = "python"
+auto-format=true
+language-servers = ["pylsp"]
+formatter = { command = "ruff" }
+
+[language-server.pylsp.config.pylsp]
+plugins.pyls_mypy.enabled = false
+plugins.pyls_mypy.live_mode = false
+
+[language.debugger]
+name = "debugpy"
+transport = "stdio"
+command = "python3"
+args = ["-m",  "debugpy.adapter"]
+
+[[language.debugger.templates]]
+name = "source"
+request = "launch"
+completion = [ { name = "entrypoint", completion = "filename", default = "." } ]
+args = { mode = "debug", program = "{0}" }

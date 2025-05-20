@@ -1,0 +1,63 @@
+theme = "default"
+
+[editor]
+# auto-save = true
+continue-comments=false
+completion-timeout=0
+completion-trigger-len=0
+true-color=true
+auto-pairs=false
+gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.lsp]
+enable=true
+display-messages=true
+display-inlay-hints=true
+
+[editor.whitespace.render]
+space = "none"
+tab = "none"
+nbsp = "none"
+nnbsp = "none"
+newline = "none"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+nnbsp = "␣"
+tab = "→"
+newline = "⏎"
+tabpad = "·"
+
+[editor.indent-guides]
+render = true
+character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 180 # increase value to reduce forced mid-word wrapping
+max-indent-retain = 0
+wrap-indicator = "╎"  # set wrap-indicator to "" to hide it
+
+[keys.normal]
+# "esc" = [ "normal_mode", ":format" , ":write" ] # For quick saving
+"ret" = ":write"
+"C-q" = ":quit!"
