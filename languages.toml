@@ -136,8 +136,8 @@ shebangs = ["python"]
 roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json", "requirements.txt", ".venv/"]
 comment-token = "#"
 language-servers = [
-  # {name = "pyright", except-features=["diagnostics"]},
-  "basedpyright",
+  {name = "pyright", except-features=["diagnostics"]},
+  # "basedpyright",
   "ruff",
   # "pylsp"
 ]
