@@ -2,7 +2,7 @@
 git config --global init.defaultBranch master
 sudo apt update
 sudo apt upgrade -y
-sudo apt install snapd curl wget net-tools build-essential htop borgbackup xclip gdb lldb openjdk-21-jdk -y # you only need curl and snapd to continue
+sudo apt install snapd curl wget net-tools build-essential htop borgbackup xclip gdb lldb ripgrep fzf openjdk-21-jdk -y # you only need curl and snapd to continue
 sudo apt install libc6-dev libgl1-mesa-dev libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev libxxf86vm-dev libasound2-dev pkg-config -y # ebitengine dependencies
 snap set system experimental.parallel-instances=true
 rustup toolchain install nightly-x86_64-unknown-linux-gnu
@@ -18,7 +18,7 @@ regular_snaps=(
 classic_snaps=(
     arduino android-studio brackets alacritty
     helix nano go rustup docker astral-uv pyright ruff
-    blender shotcut julia
+    blender shotcut julia nvim
 )
 
 # Install regular snaps (skip existing)
