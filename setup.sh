@@ -2,7 +2,7 @@
 git config --global init.defaultBranch master
 sudo apt update
 sudo apt upgrade -y
-sudo apt install snapd curl wget net-tools build-essential htop borgbackup xclip gdb lldb ripgrep fzf openjdk-21-jdk -y # you only need curl and snapd to continue
+sudo apt install snapd curl wget net-tools build-essential htop borgbackup xclip gdb lldb openjdk-21-jdk ripgrep fzf gnome-tweaks -y # you only need curl and snapd to continue
 sudo apt install libc6-dev libgl1-mesa-dev libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev libxxf86vm-dev libasound2-dev pkg-config -y # ebitengine dependencies
 snap set system experimental.parallel-instances=true
 rustup toolchain install nightly-x86_64-unknown-linux-gnu
@@ -11,7 +11,7 @@ rustup toolchain install nightly-x86_64-unknown-linux-gnu
 regular_snaps=(
     mattermost-desktop discord telegram-desktop gimp krita
     obs-studio ffmpeg audacity vlc dbeaver-ce beekeeper-studio
-    freecad cclite steam chromium epiphany brave
+    freecad cclite steam chromium epiphany brave kicad
 )
 
 # Classic snaps
@@ -64,11 +64,12 @@ go install github.com/jesseduffield/lazygit@latest
 go install github.com/hhatto/gocloc/cmd/gocloc@latest
 go install github.com/dundee/gdu/v5/cmd/gdu@latest
 
+go install capnproto.org/go/capnp/v3/capnpc-go@latest
 
-# installs lsp servers
+# go lsp servers for helix
 go install golang.org/x/tools/gopls@latest                               # LSP
 go install github.com/go-delve/delve/cmd/dlv@latest                      # Debugger
 go install golang.org/x/tools/cmd/goimports@latest                       # Formatter
-# go install github.com/nametake/golangci-lint-langserver@latest           # Linter
-go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-# go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest # Linter cli
+go install github.com/nametake/golangci-lint-langserver@latest           # Linter
+go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest # Linter cli
+
